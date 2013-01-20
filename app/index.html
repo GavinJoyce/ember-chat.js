@@ -7,6 +7,22 @@
     <body>
 		<p>Hello ember-chat.js</p>
 		
+		<script type="text/x-handlebars" data-template-name="rooms">
+			<h2>Chat Rooms:</h2>
+		  <div>
+		    {{outlet}}
+		  </div>
+		</script>
+		
+		<script type="text/x-handlebars" data-template-name="room">
+			<h2>{{name}} (id={{id}}):</h2>
+		  <div>
+		    {{outlet}}
+		  </div>
+		</script>
+		
+
+		
 		<script type="text/x-handlebars" data-template-name="index">
 		  <ul>
 		  {{#each item in content}}
