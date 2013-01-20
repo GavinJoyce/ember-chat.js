@@ -1,20 +1,14 @@
-
-
-
 App = Ember.Application.create();
 
 App.Room = Ember.Object.extend({
 	id: null,
-  name: 'New Room',
-	
+  name: 'New Room'
 });
 App.Room.reopenClass({
 	find: function(id) {
 		return {}; //TODO: GJ: find the correct model?
 	}
 });
-
-
 
 App.Router.map(function() {
   this.resource('rooms', function() {
@@ -23,12 +17,7 @@ App.Router.map(function() {
 	this.resource('room', { path: '/rooms/:room_id' });
 });
 
-App.IndexRoute = Ember.Route.extend({
-	//model: function() { return [1, 2, 3, 4, 5]; },
-	setupController: function(controller) {
-		//controller.set('rooms', ['room 1', 'room 2', 'room 3']);
-	}
-});
+App.IndexRoute = Ember.Route.extend({});
 
 App.RoomsRoute = Ember.Route.extend({
   setupController: function(controller) {
@@ -40,18 +29,14 @@ App.RoomsRoute = Ember.Route.extend({
   }
 });
 
-App.RoomRoute = Ember.Route.extend({
-  
+App.RoomRoute = Ember.Route.extend({});
+App.RoomController = Ember.ObjectController.extend({
+	someValue: 124857
 });
-
-App.RoomsController = Ember.ArrayController.extend({
-	
-});
-
+App.RoomsController = Ember.ArrayController.extend({});
 
 $(function() {
 	console.log('all is well');
-
 });
 
 
