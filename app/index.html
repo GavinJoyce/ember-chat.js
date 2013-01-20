@@ -5,34 +5,44 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-		<p>Hello ember-chat.js</p>
+		<script type="text/x-handlebars" data-template-name="application">
+			<li> {{#linkTo index}} Home {{/linkTo}} </li>        
+			<li> {{#linkTo rooms}} Rooms {{/linkTo}} </li>  
+
+			<hr/> 
+			<div> {{outlet}}</div>
+		</script>
+		
+		<script type="text/x-handlebars" data-template-name="index">
+			<h2>Welcome to ember-chat.js</h2>
+			{{#linkTo rooms}}View the rooms...{{/linkTo}}
+		</script>
 		
 		<script type="text/x-handlebars" data-template-name="rooms">
-			<h2>Chat Rooms:</h2>
+			<h3>CHAT</h3>
+			{{outlet}}
+		</script>
+		
+		<script type="text/x-handlebars" data-template-name="rooms/index">
+			<h4>Available Rooms</h4>
 			<ul>
 		  {{#each room in model}}
-		      <li>{{#linkTo room room}}{{room.name}}{{/linkTo}}</li>
+				<li>{{#linkTo 'rooms.show' room}} {{room.title}}{{/linkTo}}</li>
 		  {{/each}}
 		   </ul>
-		
-			[{{#linkTo index}}Home{{/linkTo}}]
 		</script>
 		
-		<script type="text/x-handlebars" data-template-name="room">
-			<h2>{{name}} (id={{id}}):</h2>
+		<script type="text/x-handlebars" data-template-name="rooms/show">
+			<h2>{{title}} (id={{id}}):</h2>
+			<p>{{description}}</p>
 		
-			[{{#linkTo rooms}} <-- Back to room list{{/linkTo}}]
-			
-			<h5>{{someValue}}</h5>
+			[{{#linkTo rooms}}Back{{/linkTo}}]
 		</script>
+		
 		
 
 		
-		<script type="text/x-handlebars" data-template-name="index">
-			<h1>Welcome to ember-chat.js</h1>
-			
-			{{#linkTo rooms}}View the rooms...{{/linkTo}}
-		</script>
+
 		
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>

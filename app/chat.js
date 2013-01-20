@@ -1,39 +1,62 @@
-App = Ember.Application.create();
+Chat = Ember.Application.create();
 
-App.Room = Ember.Object.extend({
-	id: null,
-  name: 'New Room'
-});
-App.Room.reopenClass({
-	find: function(id) {
-		return {}; //TODO: GJ: find the correct model?
-	}
+Chat.Store = DS.Store.extend({
+  revision:  11,
+  adapter: DS.FixtureAdapter.create()
 });
 
-App.Router.map(function() {
-  this.resource('rooms', function() {
+Chat.Room = DS.Model.extend({
+  title: DS.attr('string'),
+  description: DS.attr('string')
+});
+
+Chat.Room.FIXTURES = 
+[
+  {
+    id: '1',
+    title: 'Ruby Room',
+    description: 'talk about ruby'
+  },
+  {
+    id: '2',
+    title: 'Ember.js Room',
+    description: 'everything ember related'
+  },
+  {
+    id: '3',
+    title: 'JavaScript Room',
+    description: 'we also allow CoffeeScript talk'
+  },
+  {
+    id: '4',
+    title: 'Java Room',
+    description: 'there is no one here...'
+  }
+];
+
+Chat.Router.map(function() {
+  this.resource("rooms", {path: '/rooms'}, function(){
     this.route('new');
+    this.route('show', {path: '/:room_id'}) ;
+    this.route('edit', {path: '/:room_id/edit'});
   });
-	this.resource('room', { path: '/rooms/:room_id' });
 });
 
-App.IndexRoute = Ember.Route.extend({});
 
-App.RoomsRoute = Ember.Route.extend({
-  setupController: function(controller) {
-    controller.set('content', [
-			App.Room.create({ id: 1, name: 'Main Room' }),
-			App.Room.create({ id: 2, name: 'Second Room' }),
-			App.Room.create({ id: 3, name: 'Third Room' })
-		]);
+Chat.RoomsIndexRoute  = Ember.Route.extend({
+  model: function(){
+		return  Chat.Room.find();
   }
 });
 
-App.RoomRoute = Ember.Route.extend({});
-App.RoomController = Ember.ObjectController.extend({
+
+Chat.IndexRoute = Ember.Route.extend({});
+Chat.RoomsRoute = Ember.Route.extend({});
+Chat.RoomRoute = Ember.Route.extend({});
+Chat.RoomController = Ember.ObjectController.extend({
 	someValue: 124857
 });
-App.RoomsController = Ember.ArrayController.extend({});
+Chat.RoomsController = Ember.ArrayController.extend({});
 
 $(function() {
 	console.log('all is well');
