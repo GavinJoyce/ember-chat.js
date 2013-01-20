@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ember-chat.js</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+		<p>Hello ember-chat.js</p>
+		
+		<script type="text/x-handlebars" data-template-name="index">
+		  <ul>
+		  {{#each item in content}}
+		      <li>{{item}}</li>
+		  {{/each}}
+		   </ul>
+		</script>
+		
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script src="../lib/handlebars-1.0.rc.2.js"></script>
+		<script src="../lib/ember-1.0.0-pre.4.min.js"></script>
+        <script src="chat.js"></script>
+    </body>
+</html>
