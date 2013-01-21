@@ -6,3 +6,6 @@ ember-chat.js
 
 It will model a list of chat rooms. Each room will have a collection of users and messages.
 
+
+
+

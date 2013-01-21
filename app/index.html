@@ -34,8 +34,16 @@
 		
 		<script type="text/x-handlebars" data-template-name="rooms/show">
 			<h2>{{title}} (id={{id}}):</h2>
-			<p>{{description}}</p>
-		
+			<p><em>{{description}}</em></p>
+			
+			<hr />
+			<h3>Messages:</h3>
+			<ul>
+				{{#each message in messages}}
+					<li>[{{message.text}}]</li>
+				{{/each}}
+			</ul>
+			<hr />
 			[{{#linkTo rooms}}Back{{/linkTo}}]
 		</script>
 		
