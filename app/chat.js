@@ -100,31 +100,14 @@ Chat.RoomsIndexRoute  = Ember.Route.extend({
 });
 
 Chat.RoomsShowController = Ember.ObjectController.extend({
-	speak: function() { //TODO: GJ: get the current room. Find out correct way to pushObject
-		var room = Chat.Room.find(1);
+	speak: function() { 
+		var room = Chat.Room.find(1); //TODO: GJ: get the current room. 
 		var message = Chat.Message.createRecord({
 			text: 'This is another message....', room_id: 1
 		})
+		//Find out correct way to pushObject to fixture adapter (is there a bug in FixtureAdapter?)
 		room.get('messages').pushObject(message);
 	}
-});
-Chat.RoomsShowView = Ember.View.extend({
-
-});
-
-Chat.RoomsController = Ember.ArrayController.extend({});
-
-Chat.AddMessage = Ember.View.extend({
-  click: function(view, event, ctx) {
-		console.debug(view);
-		console.debug(event);
-		console.debug(ctx);
-    //alert("ClickableView was clicked!");
-  }
-});
-
-$(function() {
-	console.log('all is well');
 });
 
 
