@@ -1,0 +1,12 @@
+Chat = Ember.Application.create();
+
+
+
+
+
+
+
+
+
+
+
