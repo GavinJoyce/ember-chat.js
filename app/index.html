@@ -8,7 +8,7 @@
 		<script type="text/x-handlebars" data-template-name="application">
 			<li> {{#linkTo index}} Home {{/linkTo}} </li>        
 			<li> {{#linkTo rooms}} Rooms {{/linkTo}} </li>  
-
+			
 			<hr/> 
 			<div> {{outlet}}</div>
 		</script>
@@ -43,7 +43,8 @@
 					<li>[{{message.text}}]</li>
 				{{/each}}
 			</ul>
-			<button {{action 'speak'}}>Speak</button>
+			{{view Chat.CreateMessageView action="createMessage"}}
+			
 			<hr />
 			[{{#linkTo rooms}}Back{{/linkTo}}]
 		</script>
